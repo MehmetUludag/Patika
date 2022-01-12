@@ -1,0 +1,13 @@
+create table test (
+	id INT,
+	name VARCHAR(50),
+	birthday DATE,
+	email VARCHAR(100)
+);
+
+update test
+set name = 'mehmet'
+where id = 11
+
+delete from test
+where id = 6
