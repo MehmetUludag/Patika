@@ -55,3 +55,22 @@ except
 (
 	select first_name from customer
 );
+
+
+select * from film 
+where length > (select avg(length) from film);
+
+select count(*) from film
+where rental_rate = (select max(rental_rate) from film);
+
+select * from film
+where rental_rate = (select min(rental_rate) from film) 
+or replacement_cost = (select min(replacement_cost) from film);
+
+SELECT c.customer_id, c.first_name, c.last_name, 
+(SELECT COUNT(*) FROM payment p 
+ 	WHERE p.customer_id = c.customer_id) as payment 
+FROM customer c
+ORDER BY payment DESC
+
+
